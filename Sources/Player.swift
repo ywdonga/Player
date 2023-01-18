@@ -488,14 +488,14 @@ extension Player {
 extension Player {
 
     /// Begins playback of the media from the beginning.
-    open func playFromBeginning() {
+    public func playFromBeginning() {
         self.playbackDelegate?.playerPlaybackWillStartFromBeginning(self)
         self._avplayer.seek(to: CMTime.zero)
         self.playFromCurrentTime()
     }
 
     /// Begins playback of the media from the current time.
-    open func playFromCurrentTime() {
+    public func playFromCurrentTime() {
         if !self.autoplay {
             // External call to this method with autoplay disabled. Re-activate it before calling play.
             self._hasAutoplayActivated = true
@@ -511,7 +511,7 @@ extension Player {
     }
 
     /// Pauses playback of the media.
-    open func pause() {
+    public func pause() {
         if self.playbackState != .playing {
             return
         }
@@ -521,7 +521,7 @@ extension Player {
     }
 
     /// Stops playback of the media.
-    open func stop() {
+    public func stop() {
         if self.playbackState == .stopped {
             return
         }
@@ -536,7 +536,7 @@ extension Player {
     /// - Parameters:
     ///   - time: The time to switch to move the playback.
     ///   - completionHandler: Call block handler after seeking/
-    open func seek(to time: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
+    public func seek(to time: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
         if let playerItem = self._playerItem {
             return playerItem.seek(to: time, completionHandler: completionHandler)
         } else {
@@ -551,7 +551,7 @@ extension Player {
     ///   - toleranceBefore: The tolerance allowed before time.
     ///   - toleranceAfter: The tolerance allowed after time.
     ///   - completionHandler: call block handler after seeking
-    open func seekToTime(to time: CMTime, toleranceBefore: CMTime, toleranceAfter: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
+    public func seekToTime(to time: CMTime, toleranceBefore: CMTime, toleranceAfter: CMTime, completionHandler: ((Bool) -> Swift.Void)? = nil) {
         if let playerItem = self._playerItem {
             return playerItem.seek(to: time, toleranceBefore: toleranceBefore, toleranceAfter: toleranceAfter, completionHandler: completionHandler)
         }
@@ -560,7 +560,7 @@ extension Player {
     /// Captures a snapshot of the current Player asset.
     ///
     /// - Parameter completionHandler: Returns a UIImage of the requested video frame. (Great for thumbnails!)
-    open func takeSnapshot(completionHandler: ((_ image: UIImage?, _ error: Error?) -> Void)? ) {
+    public func takeSnapshot(completionHandler: ((_ image: UIImage?, _ error: Error?) -> Void)? ) {
         guard let asset = self._playerItem?.asset else {
             DispatchQueue.main.async {
                 completionHandler?(nil, nil)
