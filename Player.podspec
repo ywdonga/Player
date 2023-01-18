@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary = 'video player in Swift, simple way to play and stream media in your iOS or tvOS app'
   s.homepage = 'https://github.com/ywdonga/Player'
   s.social_media_url = 'http://twitter.com/piemonte'
-  s.authors = { 'patrick piemonte' => "patrick.piemonte@gmail.com" }
+  s.authors = { '329720990@qq.com' => 'dongyouweie@126.com' }
   s.source = { :git => 'https://github.com/ywdonga/Player.git', :tag => s.version }
   s.documentation_url = 'https://piemonte.github.io/Player/'
   s.ios.deployment_target = '11.0'
